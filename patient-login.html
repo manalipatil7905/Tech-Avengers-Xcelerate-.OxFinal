@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Patient Login</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand"><div class="logo">HV</div><div><h1>Patient Login</h1><small class="small">Sign in with Health ID</small></div></div>
+      <nav class="nav">
+        <a class="btn ghost" href="index.html">Home</a>
+        <a class="btn" href="patient-register.html">Register</a>
+      </nav>
+    </header>
+
+    <main class="card center-card">
+      <form id="patientLoginForm" method="POST" action="/api/patient/login">
+        <div>
+          <label for="healthid">Health ID</label>
+          <input id="healthid" name="health_id" type="text" placeholder="HV-xxxx-xxxx" required />
+        </div>
+
+        <div>
+          <label for="p_pass">Password</label>
+          <input id="p_pass" name="password" type="password" placeholder="Password" required />
+        </div>
+
+        <div class="form-actions">
+          <a class="btn ghost" href="index.html">Cancel</a>
+          <button class="btn" type="submit">Login</button>
+        </div>
+
+        <small class="small">Optionally implement OTP login later: send OTP to registered phone after verifying health id.</small>
+      </form>
+    </main>
+  </div>
+</body>
+</html>
