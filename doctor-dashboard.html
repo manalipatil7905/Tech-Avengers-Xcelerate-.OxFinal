@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Doctor Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand"><div class="logo">DR</div><div><h1>Doctor Dashboard</h1><small class="small">License ID: <span id="licId">DR-0001</span></small></div></div>
+      <nav class="nav">
+        <a class="btn ghost" href="index.html">Logout</a>
+      </nav>
+    </header>
+
+    <main class="card center-card">
+      <h3>Upload Patient Reports</h3>
+      <p class="small">Enter patient Health ID and upload scan or report. Files will be linked to patient's Health ID.</p>
+
+      <form id="uploadForm" method="POST" enctype="multipart/form-data" action="/api/doctor/upload">
+        <div>
+          <label for="patientId">Patient Health ID</label>
+          <input id="patientId" name="health_id" type="text" placeholder="HV-0001" required />
+        </div>
+
+        <div>
+          <label for="reportType">Report Type</label>
+          <select id="reportType" name="report_type" required>
+            <option value="">Choose</option>
+            <option value="mri">MRI</option>
+            <option value="xray">X-Ray</option>
+            <option value="blood">Blood Test</option>
+            <option value="ecg">ECG</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="fileUpload">Choose File</label>
+          <div class="upload-box">
+            <input id="fileUpload" name="file" type="file" />
+            <div class="small">Supported: pdf, png, jpg. Max size depends on backend/storage.</div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <a class="btn ghost" href="index.html">Cancel</a>
+          <button class="btn" type="submit">Upload & Link to Patient</button>
+        </div>
+
+        <small class="small">Backend must validate patient health_id, store file (cloud or storage) and save file metadata (type, url, uploader, date).</small>
+      </form>
+    </main>
+  </div>
+</body>
+</html>
