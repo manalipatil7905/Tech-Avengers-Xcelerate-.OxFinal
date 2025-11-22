@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Patient Registration</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand"><div class="logo">HV</div><div><h1>Patient Register</h1><small class="small">Create your Health ID</small></div></div>
+      <nav class="nav">
+        <a class="btn ghost" href="index.html">Home</a>
+        <a class="btn" href="patient-login.html">Patient Login</a>
+      </nav>
+    </header>
+
+    <main class="card center-card">
+      <form id="patientRegisterForm" class="grid" method="POST" action="/api/patient/register">
+        <!-- NOTE: Replace action with your backend endpoint -->
+        <div>
+          <label for="pname">Full Name</label>
+          <input id="pname" name="name" type="text" placeholder="e.g. Ravi Kumar" required />
+        </div>
+
+        <div>
+          <label for="pphone">Phone Number</label>
+          <input id="pphone" name="phone" type="tel" placeholder="+91 9XXXXXXXXX" required />
+          <small class="small">We will use this number to send OTP for verification</small>
+        </div>
+
+        <div>
+          <label for="ppassword">Password</label>
+          <input id="ppassword" name="password" type="password" placeholder="Choose a strong password" required />
+        </div>
+
+        <div>
+          <label for="pbgroup">Blood Group</label>
+          <select id="pbgroup" name="blood_group">
+            <option value="">Select</option>
+            <option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="pallergy">Allergies</label>
+          <input id="pallergy" name="allergies" type="text" placeholder="e.g. Penicillin, Pollen (comma separated)" />
+        </div>
+
+        <div style="grid-column:1 / -1">
+          <label for="paddress">Address</label>
+          <textarea id="paddress" name="address" placeholder="Permanent address"></textarea>
+        </div>
+
+        <div class="form-actions" style="grid-column:1 / -1">
+          <a class="btn ghost" href="index.html">Cancel</a>
+          <button class="btn" type="submit">Register & Generate Health ID</button>
+        </div>
+
+        <small class="small" style="grid-column:1 / -1">After successful registration, your <strong>Health ID</strong> will be generated and shown. Save it — it's used to login.</small>
+      </form>
+    </main>
+  </div>
+
+  <!-- Hook: Use JS to intercept form, call backend -> otp verification -> show Health ID -->
+  <!-- Example: after POST /api/patient/register returns success, show generated health_id -->
+</body>
+</html>
