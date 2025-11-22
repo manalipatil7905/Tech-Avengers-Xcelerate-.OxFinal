@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Doctor Registration</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand"><div class="logo">HV</div><div><h1>Doctor Register</h1><small class="small">Get your License ID</small></div></div>
+      <nav class="nav">
+        <a class="btn ghost" href="index.html">Home</a>
+        <a class="btn" href="doctor-login.html">Doctor Login</a>
+      </nav>
+    </header>
+
+    <main class="card center-card">
+      <form id="doctorRegisterForm" class="grid" method="POST" action="/api/doctor/register">
+        <div>
+          <label for="dname">Full Name</label>
+          <input id="dname" name="name" type="text" required />
+        </div>
+
+        <div>
+          <label for="dphone">Phone Number</label>
+          <input id="dphone" name="phone" type="tel" required />
+          <small class="small">Phone used for login & notifications</small>
+        </div>
+
+        <div>
+          <label for="dspecial">Specialization</label>
+          <input id="dspecial" name="specialization" type="text" />
+        </div>
+
+        <div>
+          <label for="dpassword">Password</label>
+          <input id="dpassword" name="password" type="password" required />
+        </div>
+
+        <div class="form-actions" style="grid-column:1 / -1">
+          <a class="btn ghost" href="index.html">Cancel</a>
+          <button class="btn" type="submit">Register & Get License ID</button>
+        </div>
+
+        <small class="small" style="grid-column:1 / -1">After registration, the system should generate a License ID (example: DR-0001). Save it for login.</small>
+      </form>
+    </main>
+  </div>
+</body>
+</html>
