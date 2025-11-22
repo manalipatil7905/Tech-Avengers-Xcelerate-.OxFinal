@@ -1,1 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>HealthVault — landing</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <div class="logo">HV</div>
+        <div>
+          <h1>HealthVault</h1>
+          <small class="small">Secure patient records & easy sharing</small>
+        </div>
+      </div>
+      <nav class="nav">
+        <a class="btn ghost" href="patient-login.html">Patient Login</a>
+        <a class="btn ghost" href="doctor-login.html">Doctor Login</a>
+        <a class="btn" href="patient-register.html">Get Started</a>
+      </nav>
+    </header>
 
+    <main class="card center-card">
+      <h2>Welcome to HealthVault</h2>
+      <p class="small">Create Health IDs for patients and License IDs for doctors. Use OTP verification for secure record sharing.</p>
+
+      <div class="grid row-2" style="margin-top:18px">
+        <div class="card">
+          <h3>For Patients</h3>
+          <p class="small">Register, login using your Health ID, view your basic details and request sharing of medical history to doctors with OTP consent.</p>
+          <div style="margin-top:12px">
+            <a class="btn" href="patient-register.html">Patient Register</a>
+            <a class="btn ghost" href="patient-login.html">Patient Login</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>For Doctors</h3>
+          <p class="small">Register to get a License ID, login and upload patient reports tied to Health IDs.</p>
+          <div style="margin-top:12px">
+            <a class="btn" href="doctor-register.html">Doctor Register</a>
+            <a class="btn ghost" href="doctor-login.html">Doctor Login</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
