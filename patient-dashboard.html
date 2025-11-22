@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Patient Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand"><div class="logo">HV</div><div><h1>Patient Dashboard</h1><small class="small">Health ID: <span id="healthIdDisplay">HV-XXXX-0001</span></small></div></div>
+      <nav class="nav">
+        <a class="btn ghost" href="index.html">Logout</a>
+      </nav>
+    </header>
+
+    <main class="dashboard">
+      <aside class="side card">
+        <div class="profile">
+          <div class="avatar">MP</div>
+          <div class="info">
+            <strong id="pnameDisplay">Ravi Kumar</strong>
+            <small id="pphoneDisplay">+91 98765 43210</small>
+            <small id="phealthSmall" class="small">Health ID: <span id="phealthid">HV-0001</span></small>
+          </div>
+        </div>
+
+        <hr style="margin:12px 0"/>
+
+        <div>
+          <h4 class="small">Basic Details</h4>
+          <p class="small"><strong>Blood:</strong> <span id="pbGroup">O+</span></p>
+          <p class="small"><strong>Allergies:</strong> <span id="pAllergies">None</span></p>
+          <p class="small"><strong>Address:</strong> <span id="pAddress">Belgaum, Karnataka</span></p>
+        </div>
+      </aside>
+
+      <section class="card">
+        <h3>Medical Records</h3>
+        <p class="small">To view/download records, a doctor must request access using their License ID. You will receive OTP on your registered phone to approve sharing.</p>
+
+        <div style="margin-top:12px">
+          <label for="docLicense">Doctor License ID (for request)</label>
+          <input id="docLicense" type="text" placeholder="DR-xxxx-000" />
+          <div style="margin-top:10px">
+            <button id="requestBtn" class="btn">Request Medical History (sends OTP)</button>
+          </div>
+          <small class="small">After verification you'll see buttons for each report type (MRI, Xray, Blood test, ECG).</small>
+        </div>
+
+        <hr style="margin:18px 0"/>
+
+        <div id="recordsArea" style="display:none">
+          <h4>Available Reports</h4>
+          <div class="types" id="typesList">
+            <!-- dynamic: each .type opens the report viewer -->
+            <div class="type" onclick="openReport('mri')">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'></svg>" alt="">
+              <strong>MRI Scan</strong>
+            </div>
+
+            <div class="type" onclick="openReport('xray')">
+              <strong>X-Ray</strong>
+            </div>
+
+            <div class="type" onclick="openReport('blood')">
+              <strong>Blood Test</strong>
+            </div>
+
+            <div class="type" onclick="openReport('ecg')">
+              <strong>ECG</strong>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- OTP Modal -->
+  <div id="otpModal" class="modal-backdrop">
+    <div class="modal card">
+      <h3>Verify OTP</h3>
+      <p class="small">An OTP has been sent to your registered number <strong id="otpPhone">+91 98765 43210</strong>.</p>
+      <div>
+        <label for="otp">Enter OTP</label>
+        <input id="otp" type="text" placeholder="6-digit code" />
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+        <button class="btn ghost" onclick="closeOtp()">Cancel</button>
+        <button class="btn" onclick="verifyOtp()">Verify OTP & Show Records</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    
+
+    const requestBtn = document.getElementById('requestBtn');
+    const otpModal = document.getElementById('otpModal');
+    const recordsArea = document.getElementById('recordsArea');
+
+    requestBtn.addEventListener('click', ()=> {
+      const docId = document.getElementById('docLicense').value.trim();
+      if(!docId){
+        alert('Please enter doctor license id');
+        return;
+      }
+    
+      otpModal.classList.add('show');
+    });
+
+    function closeOtp(){ otpModal.classList.remove('show'); }
+    function verifyOtp(){
+      const otp = document.getElementById('otp').value.trim();
+      if(otp.length===0) { alert('Enter OTP'); return; }
+    
+      otpModal.classList.remove('show');
+      recordsArea.style.display='block';
+      // optionally populate types from backend
+    }
+
+    function openReport(type){
+      // Redirect to page which lists the files: view-record.html?type=xray
+      window.location.href = 'view-record.html?type=' + encodeURIComponent(type);
+    }
+  </script>
+</body>
+</html>
