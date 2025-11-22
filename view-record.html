@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>View Medical Records</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand"><div class="logo">HV</div><div><h1>Records</h1><small class="small">Patient Records</small></div></div>
+      <nav class="nav">
+        <a class="btn ghost" href="patient-dashboard.html">Back</a>
+      </nav>
+    </header>
+
+    <main class="card center-card">
+      <h3 id="title">Reports</h3>
+      <p class="small">Click to view or download a file.</p>
+
+      <div id="filesList" style="margin-top:12px" class="grid">
+        <!-- Backend will populate a list of files (links / thumbnails) -->
+        <div class="card">
+          <strong>Example_MRI_01.pdf</strong>
+          <div class="small" style="margin-top:8px">Uploaded: 2025-11-20</div>
+          <div style="margin-top:8px">
+            <a class="btn ghost" href="#">View</a>
+            <a class="btn" href="#">Download</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // read query param to know which type to show
+    const params = new URLSearchParams(location.search);
+    const type = params.get('type') || 'unknown';
+    document.getElementById('title').textContent = (type || 'Reports').toUpperCase();
+    // call backend: GET /api/patient/records?health_id=...&type=type
+    // populate filesList with results
+  </script>
+</body>
+</html>
