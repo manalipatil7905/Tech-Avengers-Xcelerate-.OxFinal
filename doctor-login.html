@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Doctor Login</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand"><div class="logo">HV</div><div><h1>Doctor Login</h1><small class="small">Sign in with License ID</small></div></div>
+      <nav class="nav">
+        <a class="btn ghost" href="index.html">Home</a>
+        <a class="btn" href="doctor-register.html">Register</a>
+      </nav>
+    </header>
+
+    <main class="card center-card">
+      <form method="POST" action="/api/doctor/login">
+        <div>
+          <label for="licenseId">License ID</label>
+          <input id="licenseId" name="license_id" type="text" placeholder="DR-0001" required />
+        </div>
+
+        <div>
+          <label for="dpass">Password</label>
+          <input id="dpass" name="password" type="password" required />
+        </div>
+
+        <div class="form-actions">
+          <a class="btn ghost" href="index.html">Cancel</a>
+          <button class="btn" type="submit">Login</button>
+        </div>
+      </form>
+    </main>
+  </div>
+</body>
+</html>
